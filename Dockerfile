@@ -12,7 +12,7 @@ RUN printf '<IfModule mpm_prefork_module>\n\tStartServers 2\n\tMinSpareServers 2
 
 # Let browsers cache images, fonts, CSS and JS instead of re-downloading them on every visit
 COPY static-cache.conf /etc/apache2/conf-available/static-cache.conf
-RUN a2enmod expires && a2enconf static-cache
+RUN a2enmod expires headers && a2enconf static-cache
 
 RUN usermod -s /bin/bash www-data
 RUN chown www-data:www-data /var/www
